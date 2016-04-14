@@ -2,7 +2,7 @@
 import datetime
 import os
 
-info = 'elementary OS '
+info = 'Budgie-Remix'
 
 cf = open("terraform.conf", "r")
 config = cf.read()
