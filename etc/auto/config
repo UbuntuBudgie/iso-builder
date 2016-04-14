@@ -1,0 +1,24 @@
+#! /bin/sh
+set -e
+
+. ./terraform.conf
+
+HOOKS="update-apt-file-cache update-apt-xapian-index update-mlocate-database remove-dbus-machine-id remove-openssh-server-host-keys remove-udev-persistent-rules"
+
+lb config noauto \
+    --architecture "$ARCH" \
+    --binary-images iso-hybrid \
+    --bootloader syslinux \
+    --bootstrap-keyring ubuntu-keyring \
+    --build-with-chroot false \
+    --distribution "$BASECODENAME" \
+    --hooks "$HOOKS" \
+    --iso-application "$NAME" \
+    --iso-volume "$NAME" \
+    --memtest none \
+    --mode ubuntu \
+    --parent-archive-areas "main restricted universe multiverse" \
+    --source false \
+    --syslinux-theme ubuntu-xenial \
+    --zsync false
+
