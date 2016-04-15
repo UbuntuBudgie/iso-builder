@@ -8,7 +8,7 @@ check_permissions () {
 }
 
 check_dependencies () {
-    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build squashfs-tools syslinux syslinux-themes-elementary-freya zsync"
+    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build squashfs-tools syslinux syslinux-themes-ubuntu-xenial zsync"
     for PACKAGE in $PACKAGES; do
         dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
     done
