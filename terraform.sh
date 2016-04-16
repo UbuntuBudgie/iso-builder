@@ -8,13 +8,14 @@ check_permissions () {
 }
 
 check_dependencies () {
-    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build squashfs-tools syslinux syslinux-themes-ubuntu-xenial zsync"
+    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build squashfs-tools syslinux syslinux-themes-ubuntu-xenial zsync python-minimal syslinux-utils"
     for PACKAGE in $PACKAGES; do
         dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
     done
 
     if [[ "$MISSING_DEPENDENCIES" != "" ]]; then
-        echo "E: Missing dependencies! Please install the following packages: $MISSING_PACKAGES" > /dev/stderr
+        echo "E: Missing dependencies! Now install the following packages: $MISSING_PACKAGES" > /dev/stderr
+        apt install $MISSING_PACKAGES
         exit 1
     fi
 }
