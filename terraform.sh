@@ -14,7 +14,8 @@ check_dependencies () {
     done
 
     if [[ "$MISSING_DEPENDENCIES" != "" ]]; then
-        echo "E: Missing dependencies! Now install the following packages: $MISSING_PACKAGES" > /dev/stderr
+        echo "E: Missing dependencies! Now install the following packages: $MISSING_PACKAGES"
+        apt update
         apt install $MISSING_PACKAGES
         exit 1
     fi
