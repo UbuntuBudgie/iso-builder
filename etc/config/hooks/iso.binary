@@ -24,6 +24,7 @@ rsync \
     --exclude=/md5sum.txt \
     --exclude=/pics \
     --exclude=/pool \
+    --exclude=/preseed \
     --exclude=/ubuntu \
     --exclude=/wubi.exe \
     mnt/ \

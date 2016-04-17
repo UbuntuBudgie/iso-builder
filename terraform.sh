@@ -8,15 +8,13 @@ check_permissions () {
 }
 
 check_dependencies () {
-    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build squashfs-tools syslinux syslinux-themes-ubuntu-xenial zsync python-minimal syslinux-utils"
+    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build squashfs-tools syslinux syslinux-themes-ubuntu-xenial zsync"
     for PACKAGE in $PACKAGES; do
         dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
     done
 
     if [[ "$MISSING_DEPENDENCIES" != "" ]]; then
-        echo "E: Missing dependencies! Now install the following packages: $MISSING_PACKAGES"
-        apt update
-        apt install $MISSING_PACKAGES
+        echo "E: Missing dependencies! Please install the following packages: $MISSING_PACKAGES" > /dev/stderr
         exit 1
     fi
 }
@@ -110,7 +108,7 @@ build () {
 
     YYYYMMDD="$(date +%Y%m%d)"
     mkdir -p "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH"
-    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/budgie-remix_$VERSION-$CHANNEL-$BUILD_ARCH.$YYYYMMDD.iso"
+    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/budgie-remix-$VERSION-$BUILD_ARCH.$YYYYMMDD.iso"
     mv binary.* "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/"
 }
 

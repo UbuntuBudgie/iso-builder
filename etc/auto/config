@@ -6,11 +6,9 @@ set -e
 HOOKS="update-apt-file-cache update-apt-xapian-index update-mlocate-database remove-dbus-machine-id remove-openssh-server-host-keys remove-udev-persistent-rules"
 
 lb config noauto \
-    --verbose \
     --architecture "$ARCH" \
     --binary-images iso-hybrid \
     --bootloader syslinux \
-    --syslinux-theme ubuntu-xenial \
     --bootstrap-keyring ubuntu-keyring \
     --build-with-chroot false \
     --distribution "$BASECODENAME" \
@@ -21,5 +19,9 @@ lb config noauto \
     --mode ubuntu \
     --parent-archive-areas "main restricted universe multiverse" \
     --source false \
-    --zsync false \
+    --syslinux-theme ubuntu-xenial \
+    --zsync false
 
+# replace channel and suite
+sed -i "s/@CHANNEL/$CHANNEL/" config/archives/*.list
+sed -i "s/@BASECODENAME/$BASECODENAME/" config/archives/*.list
