@@ -19,7 +19,7 @@ lb config noauto \
     --mode ubuntu \
     --parent-archive-areas "main restricted universe multiverse" \
     --source false \
-    --syslinux-theme ubuntu-xenial \
+    --syslinux-theme budgie-remix \
     --zsync false
 
 # replace channel and suite

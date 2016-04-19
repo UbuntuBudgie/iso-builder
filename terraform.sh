@@ -8,7 +8,7 @@ check_permissions () {
 }
 
 check_dependencies () {
-    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build python-minimal squashfs-tools syslinux syslinux-themes-ubuntu-xenial syslinux-utils zsync"
+    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu git-core live-build python-minimal squashfs-tools syslinux syslinux-themes-ubuntu-xenial syslinux-utils zsync"
     for PACKAGE in $PACKAGES; do
         dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
     done
@@ -18,6 +18,20 @@ check_dependencies () {
         exit 1
     fi
 }
+
+copysyslinux () {
+    BASE_DIR="$PWD"
+    git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git
+    cd syslinux-themes-budgie-remix
+    cp -R themes/budgie-remix /usr/share/syslinux/themes/
+    cd $BASE_DIR 
+    rm -rf syslinux-themes-budgie-remix/
+}
+
+removesyslinux () {
+    rm -rf /usr/share/syslinux/themes/budgie-remix/ 
+}
+
 
 read_config () {
     BASE_DIR="$PWD"
@@ -114,6 +128,7 @@ build () {
 
 check_permissions
 check_dependencies
+copysyslinux
 read_config
 
 if [[ "$ARCH" == "all" ]]; then
@@ -122,3 +137,6 @@ if [[ "$ARCH" == "all" ]]; then
 else
     build "$ARCH"
 fi
+removesyslinux
+
+
