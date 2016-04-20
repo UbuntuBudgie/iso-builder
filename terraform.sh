@@ -8,13 +8,18 @@ check_permissions () {
 }
 
 check_dependencies () {
-    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu git-core live-build python-minimal squashfs-tools syslinux syslinux-themes-ubuntu-xenial syslinux-utils zsync"
-    for pkg in $PACKAGES ; do
-    if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null; then
+   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build python-minimal squashfs-tools syslinux syslinux-themes-ubuntu-xenial syslinux-utils zsync"
+
+for pkg in $PACKAGES; do
+    
+if [ "dpkg -l | awk {'print $2'} | grep --regexp=^$pkg$ != """ ]; then
+
+        echo -e "$pkg is already installed"
     else
-    apt install $pkg -y
+        apt-get install $pkg -y
+        echo "Successfully installed $pkg"
     fi
-    done
+done
 }
 
 copysyslinux () {
