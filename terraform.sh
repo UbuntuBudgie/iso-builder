@@ -12,7 +12,7 @@ check_dependencies () {
 
 for pkg in $PACKAGES; do
     
-if [ "dpkg -l | awk {'print $2'} | grep --regexp=^$pkg$ != """ ]; then
+if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null; then
 
         echo -e "$pkg is already installed"
     else
