@@ -9,14 +9,12 @@ check_permissions () {
 
 check_dependencies () {
     PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu git-core live-build python-minimal squashfs-tools syslinux syslinux-themes-ubuntu-xenial syslinux-utils zsync"
-    for PACKAGE in $PACKAGES; do
-        dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
-    done
-
-    if [[ "$MISSING_DEPENDENCIES" != "" ]]; then
-        echo "E: Missing dependencies! Please install the following packages: $MISSING_PACKAGES" > /dev/stderr
-        exit 1
+    for pkg in $PACKAGES ; do
+    if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null; then
+    else
+    apt install $pkg -y
     fi
+    done
 }
 
 copysyslinux () {
