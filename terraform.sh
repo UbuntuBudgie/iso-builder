@@ -8,7 +8,7 @@ check_permissions () {
 }
 
 check_dependencies () {
-   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build python-minimal squashfs-tools syslinux syslinux-themes-ubuntu-xenial syslinux-utils zsync"
+   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync"
 
 for pkg in $PACKAGES; do
     
@@ -24,6 +24,7 @@ done
 
 copysyslinux () {
     BASE_DIR="$PWD"
+    mkdir -p /usr/share/syslinux/themes/
     git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git
     cd syslinux-themes-budgie-remix
     cp -R themes/budgie-remix /usr/share/syslinux/themes/
@@ -32,7 +33,7 @@ copysyslinux () {
 }
 
 removesyslinux () {
-    rm -rf /usr/share/syslinux/themes/budgie-remix/ 
+    rm -rf /usr/share/syslinux/themes/
 }
 
 
