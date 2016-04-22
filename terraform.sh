@@ -29,11 +29,11 @@ copysyslinux () {
     cd syslinux-themes-budgie-remix
     cp -R themes/budgie-remix /usr/share/syslinux/themes/
     cd $BASE_DIR 
-    rm -rf syslinux-themes-budgie-remix/
 }
 
 removesyslinux () {
     rm -rf /usr/share/syslinux/themes/
+    rm -rf cd $BASE_DIR/syslinux-themes-budgie-remix/
 }
 
 
