@@ -1,3 +1,25 @@
+# Bulgarian
+language-pack-gnome-bg
+language-pack-bg
+wbulgarian
+
+# Catalan
+language-pack-gnome-ca
+language-pack-ca
+wcatalan
+
+# Czech
+language-pack-gnome-cs
+language-pack-cs
+
+# Danish
+language-pack-gnome-da
+language-pack-da
+
+# Dutch
+language-pack-gnome-nl
+language-pack-nl
+
 # English
 language-pack-gnome-en
 language-pack-en
@@ -8,3 +30,51 @@ wbritish
 language-pack-gnome-fr
 language-pack-fr
 wfrench
+
+# German
+language-pack-gnome-de
+language-pack-de
+wngerman
+
+# Hungarian
+language-pack-gnome-hu
+language-pack-hu
+
+# Italian
+language-pack-gnome-it
+language-pack-it
+witalian
+
+# Norwegian
+language-pack-gnome-nb
+language-pack-nb
+
+# Polish
+language-pack-gnome-pl
+language-pack-pl
+wpolish
+
+# Portuguese
+language-pack-gnome-pt
+language-pack-pt
+wbrazilian
+wportuguese
+
+# Russian
+language-pack-gnome-ru
+language-pack-ru
+
+# Spanish
+language-pack-gnome-es
+language-pack-es
+wspanish
+
+# Swedish
+language-pack-gnome-sv
+language-pack-sv
+wswedish
+
+# Ukrainian
+language-pack-gnome-uk
+language-pack-uk
+wukrainian
