@@ -8,7 +8,7 @@ check_permissions () {
 }
 
 check_dependencies () {
-   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync"
+   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu isolinux live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync"
 
 for pkg in $PACKAGES; do
     
