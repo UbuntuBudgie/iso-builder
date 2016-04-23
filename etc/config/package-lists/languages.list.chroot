@@ -2,166 +2,96 @@
 language-pack-gnome-bg
 language-pack-bg
 wbulgarian
+firefox-locale-bg
 
 # Catalan
 language-pack-gnome-ca
 language-pack-ca
 wcatalan
+firefox-locale-ca
 
 # Czech
 language-pack-gnome-cs
 language-pack-cs
+firefox-locale-cs
 
 # Danish
 language-pack-gnome-da
 language-pack-da
+firefox-locale-da
 
 # Dutch
 language-pack-gnome-nl
 language-pack-nl
+firefox-locale-nl
 
 # English
 language-pack-gnome-en
 language-pack-en
 wamerican
 wbritish
+firefox-locale-en
 
 # French
 language-pack-gnome-fr
 language-pack-fr
 wfrench
+firefox-locale-fr
 
 # German
 language-pack-gnome-de
 language-pack-de
 wngerman
+firefox-locale-de
 
 # Hungarian
 language-pack-gnome-hu
 language-pack-hu
+firefox-locale-hu
 
 # Italian
 language-pack-gnome-it
 language-pack-it
 witalian
+firefox-locale-it
 
 # Norwegian
 language-pack-gnome-nb
 language-pack-nb
+firefox-locale-nb
 
 # Polish
 language-pack-gnome-pl
 language-pack-pl
 wpolish
+firefox-locale-pl
 
 # Portuguese
 language-pack-gnome-pt
 language-pack-pt
 wbrazilian
 wportuguese
+firefox-locale-pt
 
 # Russian
 language-pack-gnome-ru
 language-pack-ru
+firefox-locale-ru
 
 # Spanish
 language-pack-gnome-es
 language-pack-es
 wspanish
+firefox-locale-es
 
 # Swedish
 language-pack-gnome-sv
 language-pack-sv
 wswedish
+firefox-locale-sv
 
 # Ukrainian
 language-pack-gnome-uk
 language-pack-uk
 wukrainian
-
-firefox-locale-af
-firefox-locale-en
-firefox-locale-hu
-firefox-locale-mn
-firefox-locale-sr
-firefox-locale-an
-firefox-locale-eo
-firefox-locale-hy
-firefox-locale-mr
-firefox-locale-sv
-firefox-locale-ar
-firefox-locale-es
-firefox-locale-id
-firefox-locale-ms
-firefox-locale-sw
-firefox-locale-as
-firefox-locale-et
-firefox-locale-is
-firefox-locale-nb
-firefox-locale-ta
-firefox-locale-ast
-firefox-locale-eu
-firefox-locale-it
-firefox-locale-nl
-firefox-locale-te
-firefox-locale-az
-firefox-locale-fa
-firefox-locale-ja
-firefox-locale-nn
-firefox-locale-th
-firefox-locale-be
-firefox-locale-fi
-firefox-locale-ka
-firefox-locale-nso
-firefox-locale-tr
-firefox-locale-bg
-firefox-locale-fr
-firefox-locale-kk
-firefox-locale-oc
 firefox-locale-uk
-firefox-locale-bn
-firefox-locale-fy
-firefox-locale-km
-firefox-locale-or
-firefox-locale-uz
-firefox-locale-br
-firefox-locale-ga
-firefox-locale-kn
-firefox-locale-pa
-firefox-locale-vi
-firefox-locale-bs
-firefox-locale-gd
-firefox-locale-ko
-firefox-locale-pl
-firefox-locale-xh
-firefox-locale-ca
-firefox-locale-gl
-firefox-locale-ku
-firefox-locale-pt
-firefox-locale-zh-hans
-firefox-locale-cs
-firefox-locale-gn
-firefox-locale-lg
-firefox-locale-ro
-firefox-locale-zh-hant
-firefox-locale-csb
-firefox-locale-gu
-firefox-locale-lt
-firefox-locale-ru
-firefox-locale-zu
-firefox-locale-cy
-firefox-locale-he
-firefox-locale-lv
-firefox-locale-si
-firefox-locale-da
-firefox-locale-hi
-firefox-locale-mai
-firefox-locale-sk
-firefox-locale-de
-firefox-locale-hr
-firefox-locale-mk
-firefox-locale-sl
-firefox-locale-el
-firefox-locale-hsb
-firefox-locale-ml
-firefox-locale-sq
