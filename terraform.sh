@@ -67,29 +67,28 @@ uefi () {
     umount "$TMP_DIR/mnt"
 
     # Perform magic
-    mkisofs \
-        -U \
-        -A "$NAME $VERSION ${CODENAME^}" \
-        -V "$NAME $VERSION ${CODENAME^}" \
-        -volset "$NAME $VERSION ${CODENAME^}" \
-        -J \
-        -joliet-long \
-        -r \
-        -quiet \
-        -T \
-        -o binary.hybrid.iso \
-        -b "isolinux/isolinux.bin" \
-        -c "isolinux/boot.cat" \
-        -no-emul-boot \
-        -boot-load-size 4 \
-        -boot-info-table \
-        -eltorito-alt-boot \
-        -e "boot/grub/efi.img" \
-        -no-emul-boot \
+    xorriso -as mkisofs \
+	-r \
+	-J \
+	-joliet-long \
+	-A "$NAME $VERSION ${CODENAME^}" \
+	-V "$NAME" \
+	-volset "$NAME" \
+	-partition_offset 16 \
+	-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
+	-c isolinux/boot.cat \
+	-b isolinux/isolinux.bin \
+	-no-emul-boot \
+	-boot-load-size 4 \
+	-boot-info-table \
+	-eltorito-alt-boot \
+	-e boot/grub/efi.img \
+	-no-emul-boot \
+	-isohybrid-gpt-basdat \
+	-o binary.hybrid.iso \
         "$TMP_DIR/contents"
 
-    # CD and USB boot support
-    isohybrid --uefi "$ISO"
+    # CD and USB boot supportisohybrid --uefi "$ISO"
 }
 
 build () {
