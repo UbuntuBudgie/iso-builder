@@ -44,18 +44,6 @@ cp chroot/boot/$(ls -1 chroot/boot | grep ^initrd | sort --version-sort | tail -
 # default. Installing NM on an existing system only manages wifi and wwan via
 # /usr/lib/NetworkManager/conf.d/10-globally-managed-devices.conf. When setting
 # the global backend to NM, netplan overrides that file.
-if [ -d chroot/usr/lib/NetworkManager ]; then
-    echo "===== Enabling all devices in NetworkManager ===="
-    mkdir -p chroot/etc/netplan
-    cat <<EOF > chroot/etc/netplan/01-network-manager-all.yaml
-# Let NetworkManager manage all devices on this system
-network:
-  version: 2
-  renderer: NetworkManager
-EOF
-else
-    echo "==== NetworkManager not installed ===="
-fi
 
 # customization
 echo "$CHANGELOG" >                  binary/.disk/release_notes_url
