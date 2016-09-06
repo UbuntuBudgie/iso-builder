@@ -20,7 +20,7 @@ apt-get autoremove --purge -f -q -y bzr
 apt-get autoremove --purge -f -q -y metacity unity-greeter unity-settings-daemon unity-control-center
 rm -R ../ubuntu-seeds ../platform
 
-apt-get autoremove --purge -f -q -y gnome-shell
+apt-get autoremove --purge -f -q -y gnome-shell desktop-base
 
 cp /etc/rc.local /etc/rc.local.orig
 sed -i "s/exit 0/rm -fR \/var\/lib\/apt\/lists\/*/" /etc/rc.local
