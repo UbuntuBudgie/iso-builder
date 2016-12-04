@@ -1,3 +1,16 @@
 # budgie-remix meta packages
-budgie-desktop-environment
+budgie-desktop-common
+lightdm
+lightdm-gtk-greeter
+network-manager-gnome
+xdg-user-dirs-gtk
+plymouth-theme-budgie-remix-logo
+plymouth-theme-budgie-remix-text
+policykit-desktop-privileges
+gvfs-fuse
+laptop-detect
+acpi-support
+bash-completion
+nano
+app-install-data
 ubuntu-minimal
