@@ -1,5 +1,7 @@
 # budgie-remix meta packages
 budgie-desktop-common
+budgie-desktop
+budgie-indicator-applet
 lightdm
 lightdm-gtk-greeter
 network-manager-gnome
@@ -14,3 +16,8 @@ bash-completion
 nano
 app-install-data
 ubuntu-minimal
+whoopsie
+upower
+gnome-session
+libpam-gnome-keyring
+
