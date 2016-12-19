@@ -1,13 +1,10 @@
 # budgie-remix meta packages
-budgie-desktop-common
+budgie-desktop-minimal
 budgie-desktop
 budgie-indicator-applet
 lightdm
-lightdm-gtk-greeter
 network-manager-gnome
 xdg-user-dirs-gtk
-plymouth-theme-budgie-remix-logo
-plymouth-theme-budgie-remix-text
 policykit-desktop-privileges
 gvfs-fuse
 laptop-detect
@@ -20,4 +17,9 @@ whoopsie
 upower
 gnome-session
 libpam-gnome-keyring
-
+xvt
+localehelper
+python-pyicu
+python-apt
+software-properties-common
+language-selector-gnome
