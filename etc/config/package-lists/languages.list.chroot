@@ -1,30 +1,3 @@
-# Bulgarian
-language-pack-gnome-bg
-language-pack-bg
-wbulgarian
-firefox-locale-bg
-
-# Catalan
-language-pack-gnome-ca
-language-pack-ca
-wcatalan
-firefox-locale-ca
-
-# Czech
-language-pack-gnome-cs
-language-pack-cs
-firefox-locale-cs
-
-# Danish
-language-pack-gnome-da
-language-pack-da
-firefox-locale-da
-
-# Dutch
-language-pack-gnome-nl
-language-pack-nl
-firefox-locale-nl
-
 # English
 language-pack-gnome-en
 language-pack-en
@@ -44,28 +17,6 @@ language-pack-de
 wngerman
 firefox-locale-de
 
-# Hungarian
-language-pack-gnome-hu
-language-pack-hu
-firefox-locale-hu
-
-# Italian
-language-pack-gnome-it
-language-pack-it
-witalian
-firefox-locale-it
-
-# Norwegian
-language-pack-gnome-nb
-language-pack-nb
-firefox-locale-nb
-
-# Polish
-language-pack-gnome-pl
-language-pack-pl
-wpolish
-firefox-locale-pl
-
 # Portuguese
 language-pack-gnome-pt
 language-pack-pt
@@ -73,25 +24,24 @@ wbrazilian
 wportuguese
 firefox-locale-pt
 
-# Russian
-language-pack-gnome-ru
-language-pack-ru
-firefox-locale-ru
-
 # Spanish
 language-pack-gnome-es
 language-pack-es
 wspanish
 firefox-locale-es
 
-# Swedish
-language-pack-gnome-sv
-language-pack-sv
-wswedish
-firefox-locale-sv
+# fonts
+fonts-guru
+fonts-kacst-one
+fonts-khmeros-core
+fonts-lao
+fonts-liberation
+fonts-lklug-sinhala
+fonts-nanum
+fonts-noto-cjk
+fonts-sil-abyssinica
+fonts-sil-padauk
+fonts-takao-pgothic
+fonts-thai-tlwg
+fonts-tibetan-machine
 
-# Ukrainian
-language-pack-gnome-uk
-language-pack-uk
-wukrainian
-firefox-locale-uk
