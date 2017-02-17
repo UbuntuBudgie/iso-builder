@@ -25,7 +25,7 @@ done
 copysyslinux () {
     BASE_DIR="$PWD"
     mkdir -p /usr/share/syslinux/themes/
-    git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git
+    git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git -b zesty
     cd syslinux-themes-budgie-remix
     cp -R themes/budgie-remix /usr/share/syslinux/themes/
     cd $BASE_DIR 
