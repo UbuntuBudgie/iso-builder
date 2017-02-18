@@ -1,4 +1,6 @@
 #!/bin/sh
+
+sudo apt install --install-recommends -y xserver-xorg-hwe-16.04
 # Description: Checkout seed branches and remove blacklisted packages
 
 echo "P: Begin executing remove-blacklisted-packages chroot hook..."
