@@ -1,3 +1,6 @@
 # budgie-remix meta packages
+lightdm-gtk-greeter
+budgie-lightdm-theme
 budgie-desktop-environment
+budgie-remix-desktop
 ubuntu-minimal
