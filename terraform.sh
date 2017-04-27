@@ -25,7 +25,7 @@ done
 copysyslinux () {
     BASE_DIR="$PWD"
     mkdir -p /usr/share/syslinux/themes/
-    git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git
+    git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git -b ubuntu
     cd syslinux-themes-budgie-remix
     cp -R themes/budgie-remix /usr/share/syslinux/themes/
     cd $BASE_DIR 
@@ -125,7 +125,7 @@ build () {
 
     YYYYMMDD="$(date +%Y%m%d)"
     mkdir -p "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH"
-    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/budgie-remix-$VERSION-$BUILD_ARCH.$YYYYMMDD.iso"
+    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/ubuntu-budgie-fresh-$VERSION-$BUILD_ARCH.$YYYYMMDD.iso"
     mv binary.* "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/"
 }
 
@@ -141,5 +141,3 @@ else
     build "$ARCH"
 fi
 removesyslinux
-
-

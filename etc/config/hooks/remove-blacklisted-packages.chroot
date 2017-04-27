@@ -17,7 +17,7 @@ done
 
 apt-get autoremove --purge -f -q -y bzr gnome-shell
 
-apt-get autoremove --purge -f -q -y metacity unity-greeter unity-settings-daemon unity-control-center
+apt-get autoremove --purge -f -q -y metacity unity-greeter unity-settings-daemon unity-control-center marco
 rm -R ../ubuntu-seeds ../platform
 
 cp /etc/rc.local /etc/rc.local.orig
