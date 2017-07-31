@@ -11,18 +11,20 @@ setserial
 user-setup
 wvdial
 
-#if ARCHITECTURES amd64
 efibootmgr
 grub-efi
+secureboot-db
+
+#if ARCHITECTURES amd64
 grub-efi-amd64
 grub-efi-amd64-bin
 grub-efi-amd64-signed
-intel-microcode
 shim
 shim-signed
-secureboot-db
 #endif
 
 #if ARCHITECTURES i386
+grub-efi-ia32
+grub-efi-ia32-bin
 sl-modem-daemon
 #endif
