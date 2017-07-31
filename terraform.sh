@@ -116,10 +116,8 @@ build () {
     lb config
     lb build
 
-    if [ "$BUILD_ARCH" == "amd64" ]; then
-        uefi binary.hybrid.iso
-    fi
-
+    uefi binary.hybrid.iso
+    
     md5sum binary.hybrid.iso > binary.hybrid.iso.md5.txt
     sha256sum binary.hybrid.iso > binary.hybrid.iso.sha256.txt
 
