@@ -45,3 +45,7 @@ fonts-takao-pgothic
 fonts-thai-tlwg
 fonts-tibetan-machine
 
+localechooser-data
+locales
+language-selector-common
+language-selector-gnome
