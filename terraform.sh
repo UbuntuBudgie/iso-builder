@@ -8,7 +8,7 @@ check_permissions () {
 }
 
 check_dependencies () {
-   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu isolinux live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync"
+   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu isolinux live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync xorriso"
 
 for pkg in $PACKAGES; do
     
@@ -25,7 +25,7 @@ done
 copysyslinux () {
     BASE_DIR="$PWD"
     mkdir -p /usr/share/syslinux/themes/
-    git clone https://github.com/budgie-remix/syslinux-themes-budgie-remix.git
+    git clone https://github.com/ubuntubudgie/syslinux-themes-budgie-remix.git
     cd syslinux-themes-budgie-remix
     cp -R themes/budgie-remix /usr/share/syslinux/themes/
     cd $BASE_DIR 
@@ -140,7 +140,7 @@ build () {
 
     YYYYMMDD="$(date +%Y%m%d)"
     mkdir -p "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH"
-    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/budgie-remix-$VERSION-$BUILD_ARCH.$YYYYMMDD.iso"
+    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/cinnamon-remix-$VERSION-$BUILD_ARCH.$YYYYMMDD.iso"
     mv binary.* "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/"
 }
 
