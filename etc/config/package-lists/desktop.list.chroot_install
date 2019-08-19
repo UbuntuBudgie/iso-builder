@@ -4,3 +4,4 @@ cinnamon-desktop-environment
 ubuntu-minimal
 netplan.io
 net-tools
+resolvconf

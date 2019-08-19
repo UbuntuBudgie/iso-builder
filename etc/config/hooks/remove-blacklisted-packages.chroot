@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt install --install-recommends -y xserver-xorg-hwe-16.04
+#sudo apt install --install-recommends -y xserver-xorg-hwe-16.04
 # Description: Checkout seed branches and remove blacklisted packages
 
 echo "P: Begin executing remove-blacklisted-packages chroot hook..."
@@ -20,7 +20,7 @@ done
 apt-get autoremove --purge -f -q -y bzr
 
 apt-get autoremove --purge -f -q -y metacity unity-greeter unity-settings-daemon unity-control-center
-apt-get autoremove --purge -f -q -y gdm3 gnome-shell ubuntu-desktop
+apt-get autoremove --purge -f -q -y gdm3 gnome-shell ubuntu-desktop mutter
 rm -R ../ubuntu-seeds ../platform
 
 cp /etc/rc.local /etc/rc.local.orig
@@ -31,4 +31,8 @@ mkdir -p /etc/lightdm/lightdm.conf.d
 echo "[Seat:*]" > /etc/lightdm/lightdm.conf.d/50_cinnamon-desktop.conf
 echo "user-session=cinnamon" >> /etc/lightdm/lightdm.conf.d/50_cinnamon-desktop.conf
 echo "allow-guest=false" >> /etc/lightdm/lightdm.conf.d/50_cinnamon-desktop.conf
+mkdir -p /etc/netplan
+echo "network:" > /etc/netplan/01-network-manager-all.yaml
+echo "  version: 2" >> /etc/netplan/01-network-manager-all.yaml
+echo "  renderer: NetworkManager" >> /etc/netplan/01-network-manager-all.yaml
 
