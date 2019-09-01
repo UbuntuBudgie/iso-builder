@@ -1,6 +1,6 @@
 # budgie-remix meta packages
 slick-greeter
-cinnamon-desktop-environment
+cinnamon-core
 ubuntu-minimal
 netplan.io
 net-tools

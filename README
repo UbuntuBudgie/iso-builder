@@ -1,8 +1,18 @@
 Terraform - Debian Live configuration and scripts for generating budgie-remix OS images.
 
-To build an budgie-remix image you'll need to:
+
+To build an ISO image you'll need to:
  1) Make sure you have the dependencies installed (dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu git-core isolinux live-build python-minimal squashfs-tools syslinux syslinux-utils zsync)
  2) Change your working directory to this folder
  3) Configure etc/terraform.conf or leave it as-is
  3) Run ./terraform.sh as root
  4) When done, your images will be in the builds folder
+
+For more info above debian-live https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html
+
+----
+
+Notes:
+
+For repository keys copy the repository gpg file from /etc/apt/trusted.gpg.d/ to etc/archives - make sure the file is renamed with the extension .key.chroot
+
