@@ -39,6 +39,7 @@ lb config noauto \
     --firmware-binary false \
     --firmware-chroot false \
     --zsync false \
+    --syslinux-theme ubuntu-xenial \
     "${@}"
 
 # replace channel and suite
