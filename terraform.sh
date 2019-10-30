@@ -34,7 +34,7 @@ check_permissions () {
 
 
 check_dependencies () {
-    PACKAGES="live-build"
+    PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu isolinux live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync"
     for PACKAGE in $PACKAGES; do
         dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
     done
