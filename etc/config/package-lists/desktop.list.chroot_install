@@ -1,7 +1,8 @@
-# budgie-remix meta packages
+# cinnamon meta packages
 slick-greeter
 cinnamon-core
 ubuntu-minimal
 netplan.io
 net-tools
 resolvconf
+@XORG_HWE

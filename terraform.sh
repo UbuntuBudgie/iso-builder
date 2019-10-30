@@ -1,5 +1,30 @@
 #!/bin/bash
 
+set -e
+
+CONFIG_PATH="etc/terraform.conf"
+
+# Call getopt to validate the provided input.
+options=$(getopt -o '' -l 'config-path:' -- "$@")
+[ $? -eq 0 ] || {
+    echo "Incorrect options provided"
+    exit 1
+}
+eval set -- "$options"
+while true; do
+    case "$1" in
+    --config-path)
+        shift; # The arg is next in position args
+        CONFIG_PATH=$1
+        ;;
+    --)
+        shift
+        break
+        ;;
+    esac
+    shift
+done
+
 check_permissions () {
     if [[ "$(id -u)" != 0 ]]; then
         echo "E: Requires root permissions" > /dev/stderr
@@ -7,154 +32,72 @@ check_permissions () {
     fi
 }
 
+
 check_dependencies () {
-   PACKAGES="dctrl-tools dpkg-dev genisoimage gfxboot-theme-ubuntu isolinux live-build python-minimal squashfs-tools syslinux  syslinux-utils zsync xorriso"
+    PACKAGES="live-build"
+    for PACKAGE in $PACKAGES; do
+        dpkg -L "$PACKAGE" >/dev/null 2>&1 || MISSING_PACKAGES="$MISSING_PACKAGES $PACKAGE"
+    done
 
-for pkg in $PACKAGES; do
-    
-if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null; then
-
-        echo -e "$pkg is already installed"
-    else
-        apt-get install $pkg -y
-        echo "Successfully installed $pkg"
+    if [[ "$MISSING_PACKAGES" != "" ]]; then
+        echo "E: Missing dependencies! Please install the following packages: $MISSING_PACKAGES" > /dev/stderr
+        exit 1
     fi
-done
 }
-
-copysyslinux () {
-    BASE_DIR="$PWD"
-    mkdir -p /usr/share/syslinux/themes/
-    git clone https://github.com/ubuntubudgie/syslinux-themes-budgie-remix.git
-    cd syslinux-themes-budgie-remix
-    cp -R themes/budgie-remix /usr/share/syslinux/themes/
-    cd $BASE_DIR 
-}
-
-removesyslinux () {
-    rm -rf /usr/share/syslinux/themes/
-    rm -rf cd $BASE_DIR/syslinux-themes-budgie-remix/
-}
-
 
 read_config () {
     BASE_DIR="$PWD"
-    source "$BASE_DIR"/etc/terraform.conf
-}
-
-uefi () {
-    ISO="$1"
-
-    # /tmp/tmp.XXXXXXXXXX
-    TMP_DIR=$(mktemp -d)
-
-    clean_up () {
-      umount "$TMP_DIR/mnt" >/dev/null 2>&1 || true
-      rm -rf "$TMP_DIR"
-    }
-    trap clean_up EXIT
-
-    # Create temporary directories
-    mkdir -p "$TMP_DIR"/{contents,mnt}
-
-    # Mount .iso
-    mount -o loop,ro "$ISO" "$TMP_DIR/mnt"
-
-    # Extract .iso contents
-    cp -rT "$TMP_DIR/mnt" "$TMP_DIR/contents"
-
-    # Unmount .iso so it can be overwritten
-    umount "$TMP_DIR/mnt"
-
-    # Perform magic
-    xorriso -as mkisofs \
-	-A "$NAME $VERSION ${CODENAME^}" \
-	-V "$NAME" \
-	-volset "$NAME" \
-	-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
-	-c isolinux/boot.cat \
-	-b isolinux/isolinux.bin \
-	-no-emul-boot \
-	-boot-load-size 4 \
-	-boot-info-table \
-	-eltorito-alt-boot \
-	-e boot/grub/efi.img \
-	-no-emul-boot \
-	-isohybrid-gpt-basdat \
-	-o binary.hybrid.iso \
-       "$TMP_DIR/contents"
-
-#    mkisofs \
-#           -U \
-#           -A "$NAME $VERSION ${CODENAME^}" \
-#           -V "$NAME $VERSION ${CODENAME^}" \
-#           -volset "$NAME $VERSION ${CODENAME^}" \
-#           -J \
-#           -joliet-long \
-#           -r \
-#           -quiet \
-#           -T \
-#           -o binary.hybrid.iso \
-#           -b "isolinux/isolinux.bin" \
-#           -c "isolinux/boot.cat" \
-#           -no-emul-boot \
-#           -boot-load-size 4 \
-#           -boot-info-table \
-#           -eltorito-alt-boot \
-#           -e "boot/grub/efi.img" \
-#           -no-emul-boot \
-#           "$TMP_DIR/contents"
-    # CD and USB boot support
-#    isohybrid --uefi "$ISO"
+    source "$BASE_DIR"/"$CONFIG_PATH"
 }
 
 build () {
     BUILD_ARCH="$1"
 
-    #  block size, compression, filter optimization
-    export MKSQUASHFS_OPTIONS="-b 1024k -comp xz -Xbcj x86"
-
     mkdir -p "$BASE_DIR/tmp/$BUILD_ARCH"
     cd "$BASE_DIR/tmp/$BUILD_ARCH" || exit
-
-    if [ ! -f ubuntu.iso ]; then
-        wget "http://releases.ubuntu.com/$BASECODENAME/ubuntu-$BASEVERSION-desktop-$BUILD_ARCH.iso" --output-document ubuntu.iso \
-        || wget "http://cdimage.ubuntu.com/daily-live/current/$BASECODENAME-desktop-$BUILD_ARCH.iso" --output-document ubuntu.iso
-    fi
 
     # remove old configs and copy over new
     rm -rf config auto
     cp -r "$BASE_DIR"/etc/* .
+    # Make sure conffile specified as arg has correct name
+    cp -f "$BASE_DIR"/"$CONFIG_PATH" terraform.conf
 
-    sed -i "s/all/$BUILD_ARCH/" terraform.conf
-    sed -i "s/@SYSLINUX/$CODENAME/" auto/config
+    # Symlink chosen package lists to where live-build will find them
+    ln -s "package-lists.$PACKAGE_LISTS_SUFFIX" "config/package-lists"
 
+    echo -e "
+#------------------#
+# LIVE-BUILD CLEAN #
+#------------------#
+"
     lb clean
+
+    echo -e "
+#-------------------#
+# LIVE-BUILD CONFIG #
+#-------------------#
+"
     lb config
+
+    echo -e "
+#------------------#
+# LIVE-BUILD BUILD #
+#------------------#
+"
     lb build
 
-    uefi binary.hybrid.iso
-    
-    md5sum binary.hybrid.iso > binary.hybrid.iso.md5.txt
-    sha256sum binary.hybrid.iso > binary.hybrid.iso.sha256.txt
-
     YYYYMMDD="$(date +%Y%m%d)"
-    mkdir -p "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH"
-    mv binary.hybrid.iso "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/cinnamon-remix-$VERSION-$BUILD_ARCH.$YYYYMMDD.iso"
-    mv binary.* "$BASE_DIR/builds/$YYYYMMDD/$BUILD_ARCH/"
+    OUTPUT_DIR="$BASE_DIR/builds/$BUILD_ARCH"
+    mkdir -p "$OUTPUT_DIR"
+    FNAME="cinnamonremix-$VERSION-$CHANNEL.$YYYYMMDD$OUTPUT_SUFFIX"
+    mv "$BASE_DIR/tmp/$BUILD_ARCH/live-image-$BUILD_ARCH.hybrid.iso" "$OUTPUT_DIR/${FNAME}.iso"
+
+    md5sum "$OUTPUT_DIR/${FNAME}.iso" > "$OUTPUT_DIR/${FNAME}.md5.txt"
+    sha256sum "$OUTPUT_DIR/${FNAME}.iso" > "$OUTPUT_DIR/${FNAME}.sha256.txt"
 }
 
 check_permissions
 check_dependencies
-copysyslinux
 read_config
 
-if [[ "$ARCH" == "all" ]]; then
-    build amd64
-    build i386
-else
-    build "$ARCH"
-fi
-removesyslinux
-
-
+build "$ARCH"

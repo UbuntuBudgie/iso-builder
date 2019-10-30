@@ -1,0 +1,21 @@
+prompt 0
+
+MENU HIDDEN
+MENU AUTOBOOT Booting cinnamon remix live disk in # seconds
+timeout 50
+
+label live-@FLAVOUR@
+	menu label ^Try or install cinnamon remix
+	menu default
+	linux /casper/vmlinuz
+	initrd /casper/initrd.lz
+	append @APPEND_LIVE@
+
+label check
+	menu label ^Check disk for defects
+	linux /casper/vmlinuz
+	append boot=casper integrity-check initrd=/casper/initrd.lz quiet splash --
+
+label hd
+	menu label ^Boot from first hard disk
+	localboot 0x80
