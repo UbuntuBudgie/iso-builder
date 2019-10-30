@@ -3,19 +3,19 @@
 
 echo "P: Begin executing remove-blacklisted-packages chroot hook..."
 
-dist="$(lsb_release -c -s -u 2>&1)"||dist="$(lsb_release -c -s)"
+#dist="$(lsb_release -c -s -u 2>&1)"||dist="$(lsb_release -c -s)"
 
-apt-get install --no-install-recommends -f -q -y bzr
+#apt-get install --no-install-recommends -f -q -y bzr
 
-bzr export --quiet ubuntu-seeds "lp:~ubuntu-core-dev/ubuntu-seeds/ubuntu.$dist"
+#bzr export --quiet ubuntu-seeds "lp:~ubuntu-core-dev/ubuntu-seeds/ubuntu.$dist"
 
-bzr export --quiet platform "lp:~ubuntu-core-dev/ubuntu-seeds/platform.$dist"
+#bzr export --quiet platform "lp:~ubuntu-core-dev/ubuntu-seeds/platform.$dist"
 
-for package in $(cat 'platform/blacklist' 'ubuntu-seeds/blacklist' | grep -v '#'); do
-    apt-get autoremove --purge -f -q -y "$package"
-done
+#for package in $(cat 'platform/blacklist' 'ubuntu-seeds/blacklist' | grep -v '#'); do
+#    apt-get autoremove --purge -f -q -y "$package"
+#done
 
-apt-get autoremove --purge -f -q -y bzr
+#apt-get autoremove --purge -f -q -y bzr
 
 apt-get autoremove --purge -f -q -y metacity unity-greeter unity-settings-daemon unity-control-center
 apt-get autoremove --purge -f -q -y gdm3 gnome-shell ubuntu-desktop mutter
