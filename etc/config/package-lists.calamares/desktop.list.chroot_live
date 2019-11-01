@@ -8,8 +8,7 @@ ubiquity-ubuntu-artwork
 syslinux-themes-ubuntu
 language-pack-en
 language-pack-gnome-en
-ubiquity-frontend-gtk
-ubiquity-frontend-gtk-panel
+calamares-settings-cinnamon-remix
 zfsutils-linux
 zfs-initramfs
 xfsprogs
@@ -19,5 +18,5 @@ ntfs-3g
 lvm2
 dmraid
 wamerican
-fwupdate-signed
+fwupdate
 mokutil
