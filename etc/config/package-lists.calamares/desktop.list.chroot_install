@@ -154,3 +154,5 @@ xorg
 zenity
 zip
 rsync
+bash-completion
+

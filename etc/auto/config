@@ -22,7 +22,7 @@ lb config noauto \
     --parent-archive-areas "main restricted universe multiverse" \
     --linux-packages linux-image \
     --linux-flavours "$KERNEL_FLAVORS" \
-    --bootappend-live "boot=casper quiet splash" \
+    --bootappend-live "boot=casper quiet" \
     --mirror-bootstrap "$MIRROR_URL" \
     --parent-mirror-bootstrap "$MIRROR_URL" \
     --mirror-chroot-security "http://security.ubuntu.com/ubuntu/" \
@@ -30,16 +30,17 @@ lb config noauto \
     --mirror-binary-security "http://security.ubuntu.com/ubuntu/" \
     --parent-mirror-binary-security "http://security.ubuntu.com/ubuntu/" \
     --mirror-binary "http://archive.ubuntu.com/ubuntu/" \
+    --apt-source-archives false \
     --parent-mirror-binary "http://archive.ubuntu.com/ubuntu/" \
     --keyring-packages ubuntu-keyring \
     --apt-options "--yes --option Acquire::Retries=5 --option Acquire::http::Timeout=100" \
+    --uefi-secure-boot enable \
     --binary-images iso-hybrid \
     --iso-application "$NAME" \
     --iso-volume "$NAME" \
     --firmware-binary false \
     --firmware-chroot false \
     --zsync false \
-    --uefi-secure-boot enable \
     "${@}"
 
 # replace channel and suite

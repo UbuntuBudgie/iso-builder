@@ -14,7 +14,7 @@ label live-@FLAVOUR@
 label check
 	menu label ^Check disk for defects
 	linux /casper/vmlinuz
-	append boot=casper integrity-check initrd=/casper/initrd.lz quiet splash --
+	append boot=casper integrity-check initrd=/casper/initrd.lz quiet --
 
 label hd
 	menu label ^Boot from first hard disk
