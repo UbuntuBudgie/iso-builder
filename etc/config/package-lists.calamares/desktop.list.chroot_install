@@ -155,4 +155,6 @@ zenity
 zip
 rsync
 bash-completion
+software-properties-gtk
+nano
 

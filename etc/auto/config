@@ -13,9 +13,11 @@ else
 fi
 
 lb config noauto \
+    --cache-stages true \
+    --cache-indices true \
     --architectures "$ARCH" \
     --mode ubuntu \
-    --initramfs none \
+    --initramfs auto \
     --distribution "$BASECODENAME" \
     --parent-distribution "$BASECODENAME" \
     --archive-areas "main restricted universe multiverse" \
@@ -41,6 +43,8 @@ lb config noauto \
     --firmware-binary false \
     --firmware-chroot false \
     --zsync false \
+    --security true \
+    --updates true \
     "${@}"
 
 # replace channel and suite
