@@ -13,8 +13,6 @@ else
 fi
 
 lb config noauto \
-    --cache-stages true \
-    --cache-indices true \
     --architectures "$ARCH" \
     --mode ubuntu \
     --initramfs auto \

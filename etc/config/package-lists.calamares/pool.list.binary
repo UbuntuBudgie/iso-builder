@@ -7,14 +7,11 @@ lupin-support
 mouseemu
 setserial
 user-setup
-
 efibootmgr
 grub-efi
 secureboot-db
-
 grub-efi-amd64
 grub-efi-amd64-bin
 grub-efi-amd64-signed
 shim
 shim-signed
-
