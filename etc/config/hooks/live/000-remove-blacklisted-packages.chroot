@@ -25,7 +25,3 @@ cp /etc/rc.local /etc/rc.local.orig
 sed -i "s/exit 0/rm -fR \/var\/lib\/apt\/lists\/*/" /etc/rc.local
 echo "mv /etc/rc.local.orig /etc/rc.local" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
-mkdir -p /etc/lightdm/lightdm.conf.d
-echo "[Seat:*]" > /etc/lightdm/lightdm.conf.d/50_cinnamon-desktop.conf
-echo "user-session=cinnamon" >> /etc/lightdm/lightdm.conf.d/50_cinnamon-desktop.conf
-echo "allow-guest=false" >> /etc/lightdm/lightdm.conf.d/50_cinnamon-desktop.conf
