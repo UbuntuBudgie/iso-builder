@@ -2,7 +2,7 @@
 
 CONFIG_FILE="$1"
 
-source "$CONFIG_FILE"
+#source "$CONFIG_FILE"
 
 echo -e "
 #----------------------#
@@ -13,7 +13,7 @@ echo -e "
 apt-get update
 apt-get install -y live-build patch ubuntu-keyring
 
-#patch -d /usr/lib/live/build/ < live-build-fix-syslinux.patch
+patch -d /usr/lib/live/build/ < live-build-fix-syslinux.patch
 
 echo -e "
 #----------------------#
@@ -21,5 +21,7 @@ echo -e "
 #----------------------#
 "
 
-./terraform.sh --config-path "$CONFIG_FILE"
-cp builds/amd64/* /artifacts/
+#./terraform.sh --config-path "$CONFIG_FILE"
+#cp builds/amd64/* /artifacts/
+./terraform.sh
+
