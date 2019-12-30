@@ -9,9 +9,8 @@ As ubuntu cinnamon-remix is built with the Debian version of `live-build`, not t
 The following example uses Docker and assumes you have Docker correctly installed and set up:
 
  1) sudo apt install docker
- 2) sudo docker pull debian
 
- later) Configure the channel in the `etc/terraform.conf` (stable, unstable).
+ 2) sudo docker pull debian
 
  3) Customise the docker image to have the ability to build eoan/focal
 
@@ -45,7 +44,7 @@ The following example uses Docker and assumes you have Docker correctly installe
     
     cd iso-builder
     
-    at this point configure etc/terraform.conf for the build you wish to make e.g. 20.04 and focal
+    at this point configure etc/terraform.conf for the build you wish to make e.g. 20.04 and focal - ensure you decide between unstable or all PPAs
 
     ./build.sh
 
