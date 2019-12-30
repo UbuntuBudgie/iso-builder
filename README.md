@@ -8,7 +8,7 @@ As ubuntu cinnamon-remix is built with the Debian version of `live-build`, not t
 
 The following example uses Docker and assumes you have Docker correctly installed and set up:
 
- 1) sudo apt install docker
+ 1) sudo apt install docker.io
 
  2) sudo docker pull debian
 
