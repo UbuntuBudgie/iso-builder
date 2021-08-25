@@ -7,7 +7,7 @@ set -e
 # HWE starts with y, Y or 1?
 if [ "$HWE" = "yes" ]; then
     KERNEL_FLAVORS="generic-hwe-${BASEVERSION}"
-    XORG_HWE="xserver-xorg-hwe-${BASEVERSION}"
+    #XORG_HWE="xserver-xorg-hwe-${BASEVERSION}"
 else
     KERNEL_FLAVORS="generic"
 fi
@@ -15,7 +15,7 @@ fi
 lb config noauto \
     --architectures "$ARCH" \
     --mode ubuntu \
-    --initramfs auto \
+    --initramfs none \
     --distribution "$BASECODENAME" \
     --parent-distribution "$BASECODENAME" \
     --archive-areas "main restricted universe multiverse" \
