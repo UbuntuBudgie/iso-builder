@@ -14,7 +14,7 @@ apt-get update
 apt-get install -y live-build patch
 apt-get install -y ./ubuntu-keyring_2020.02.11.4_all.deb
 
-patch -d /usr/lib/live/build/ < live-build-fix-shim-remove.patch
+patch /usr/lib/live/build/binary_grub-efi < live-build-fix-shim-remove.patch
 
 echo -e "
 #----------------------#
