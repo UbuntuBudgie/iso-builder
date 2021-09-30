@@ -4,7 +4,6 @@ dkms
 intel-microcode
 iucode-tool
 lupin-support
-mouseemu
 setserial
 user-setup
 efibootmgr

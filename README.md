@@ -20,19 +20,9 @@ The following example uses Docker and assumes you have Docker correctly installe
     
     e.g. root@ea5126f14ac9:/#
 
-    Now install debootstrap package and create an eoan (or focal script)
-
-    apt update && apt install debootstrap -y
-
-    cd /usr/share/debootstrap/scripts
-
-    cp disco eoan
-    
-    cd
-
     Install git and nano
 
-    apt install git nano -y
+    apt update && apt install git nano -y
 
     Clone the iso-builder
 
@@ -40,11 +30,15 @@ The following example uses Docker and assumes you have Docker correctly installe
     
     cd /home/cinnamonremix
     
-    git clone https://github.com/ubuntubudgie/iso-builder -b cinnamonv2
+    git clone https://github.com/ubuntubudgie/iso-builder
     
     cd iso-builder
     
-    at this point configure etc/terraform.conf for the build you wish to make e.g. 20.04 and focal - ensure you decide between unstable or all PPAs
+    at this point configure etc/terraform.conf for the build you wish to make e.g. 21.10 and impish - ensure you decide between unstable or all PPAs
+
+    also edit build.sh and change the symbolic link codename if necessary to match terraform.conf
+    
+    now run
 
     ./build.sh
 
